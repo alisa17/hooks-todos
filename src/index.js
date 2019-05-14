@@ -4,14 +4,17 @@ import * as serviceWorker from "./serviceWorker";
 import TodoContext from "./context";
 import todoReducer from "./reducer";
 import TodoList from "./components/TodoList";
-
+import TodoForm from "./components/TodoForm";
 const App = () => {
   const initialState = useContext(TodoContext);
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  return <TodoContext.Provider value={{ state, dispatch }}>
-    <TodoList/>
-  </TodoContext.Provider>;
+  return (
+    <TodoContext.Provider value={{ state, dispatch }}>
+      <TodoForm />
+      <TodoList />
+    </TodoContext.Provider>
+  );
 };
 ReactDOM.render(<App />, document.getElementById("root"));
 
